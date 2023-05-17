@@ -14,4 +14,5 @@ let print_tree t =
       print_endline ((repeat_str indent " ") ^ (v));
       List.iter ~f:(fun x -> print_w_indent (indent+2) x) trees
     in 
-    print_w_indent 0 t;;
+    print_w_indent 0 t;
+    print_endline "\n";;

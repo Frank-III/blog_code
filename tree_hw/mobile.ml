@@ -22,10 +22,6 @@ let balanced = function
 
 let total_trees t =
   let open Btree in 
-  (* let con_arm a = 
-    let (_, connected) = a in 
-      connected
-  in *)
   let rec con_sum_tree = function 
   | Planet x -> Leaf x 
   | Mobile ((_, rod_l), (_, rod_r)) as x -> 
