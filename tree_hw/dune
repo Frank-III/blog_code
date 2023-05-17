@@ -1,0 +1,3 @@
+(executable
+ (name moretrees)
+ (libraries core))
