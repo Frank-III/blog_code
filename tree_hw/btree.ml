@@ -19,10 +19,37 @@ let print_tree t =
   in 
   print_w_indent 0 t;;
 
+let rec dfs_tree t = 
+  let open Core in 
+  match t with 
+  | Leaf a -> printf "%d " a
+  | Tree (a, l, r) -> 
+    printf "%d " a;
+    dfs_tree l;
+    dfs_tree r;
+  ;;
 
-(* let () = 
-  let t = Tree (6, Leaf 1, Tree(5, Leaf 3, Leaf 2)) in 
-  print_tree t;; *)
+let bfs_tree t = 
+  let open Core in 
+  let rec search = function 
+  | [] -> print_endline ""
+  | hd :: tl -> 
+    match hd with 
+    | Leaf a -> 
+      printf "%d " a;
+      search tl;
+    | Tree (a, l, r) -> 
+      printf "%d " a;
+      search (List.rev (r :: l :: tl))
+  in search [t]
+
+let () = 
+  (* let t = Tree (6, Leaf 1, Tree(5, Leaf 3, Leaf 2)) in  *)
+  let t = Tree (6, Tree(5, Leaf 3, Leaf 2), Leaf 1) in 
+  print_tree t;
+  dfs_tree t;
+  print_endline "";
+  bfs_tree t;;
 
 
 
