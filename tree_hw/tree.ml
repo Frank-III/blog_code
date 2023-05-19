@@ -16,3 +16,27 @@ let print_tree t =
     in 
     print_w_indent 0 t;
     print_endline "\n";;
+
+
+let rec dfs_tree t = 
+  let open Core in 
+  match t with 
+  | Leaf a -> printf "%d " a
+  | Tree (a, trees) -> 
+    printf "%d " a;
+    List.iter ~f:(dfs_tree) trees
+  ;;
+
+let bfs_tree t = 
+  let open Core in 
+  let rec search = function 
+  | [] -> print_endline ""
+  | hd :: tl -> 
+    match hd with 
+    | Leaf a -> 
+      printf "%d " a;
+      search tl;
+    | Tree (a,  trees) -> 
+      printf "%d " a;
+      search (tl @ trees)
+  in search [t]

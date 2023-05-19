@@ -43,13 +43,12 @@ let bfs_tree t =
       search (List.rev (r :: l :: tl))
   in search [t]
 
-let () = 
-  (* let t = Tree (6, Leaf 1, Tree(5, Leaf 3, Leaf 2)) in  *)
+(* let () = 
   let t = Tree (6, Tree(5, Leaf 3, Leaf 2), Leaf 1) in 
   print_tree t;
   dfs_tree t;
   print_endline "";
-  bfs_tree t;;
+  bfs_tree t;; *)
 
 
 
